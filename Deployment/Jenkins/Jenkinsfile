@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Docker-Build') {
             steps {
-                dir('Java') {
+                dir('Wisecow') {
                     script {
                         docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
                     }
@@ -52,4 +52,3 @@ pipeline {
         }
     }
 }
-
