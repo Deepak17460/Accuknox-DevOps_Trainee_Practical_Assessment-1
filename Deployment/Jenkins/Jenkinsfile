@@ -1,25 +1,17 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'dpcode72/java'
+        IMAGE_NAME = 'dpcode72/wisecow'
         IMAGE_TAG = '1.0'
         ANSIBLE_HOST_KEY_CHECKING = 'false'
     }
     tools {
         git 'Default'
-        maven 'mvn'
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'deploy-2', credentialsId: 'Nagarro-Gitlab', url: 'https://git.nagarro.com/GITG00641/DotNet/deepak-kumar.git'
-            }
-        }
-        stage('Maven-Build') {
-            steps {
-                dir('Java') {
-                    sh "mvn clean package"
-                }
+                git branch: 'main', credentialsId: 'Gitlab', url: 'https://github.com/Deepak17460/Accuknox-DevOps_Trainee_Practical_Assessment-.git'
             }
         }
         stage('Docker-Build') {
