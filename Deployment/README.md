@@ -60,6 +60,7 @@ kubectl get services
 ## Conclusion
 You have successfully deployed the Wisecow application to your Kubernetes cluster using Helm. For any issues or further assistance, feel free to reach out.
 Wisecow Application (https://github.com/user-attachments/assets/d3014f3f-feec-46f3-b694-b5f7dac8db98)
+![image](https://github.com/user-attachments/assets/1ba70b88-54ea-4558-8c4a-d656e321155f)
 
 ---
 
