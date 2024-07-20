@@ -1,0 +1,14 @@
+---
+- name: Deploy Java Application using Helm
+  hosts: kubernetes_master_nodes
+  gather_facts: no
+  tasks:
+    - name: Deploy Helm Chart
+      community.kubernetes.helm:
+        name: javaapi
+        chart_ref: ./javaapi-chart
+        release_namespace: java-app
+        values:
+          image:
+            repository: "{{ image_name }}"
+            tag: "{{ image_tag }}"

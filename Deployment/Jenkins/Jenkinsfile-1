@@ -1,0 +1,75 @@
+pipeline {
+    agent any
+    environment {
+        IMAGE_NAME = 'dpcode72/java'
+        IMAGE_TAG = '1.0'
+        ANSIBLE_HOST_KEY_CHECKING = 'false'
+    }
+    tools {
+        git 'Default'
+        maven 'mvn'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'deploy-2', credentialsId: 'Nagarro-Gitlab', url: 'https://git.nagarro.com/GITG00641/DotNet/deepak-kumar.git'
+            }
+        }
+        stage('Maven-Build') {
+            steps {
+                dir('Java') {
+                    sh "mvn clean package"
+                }
+            }
+        }
+        stage('Docker-Build') {
+            steps {
+                dir('Java') {
+                    script {
+                        docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    }
+                }
+            }
+        }
+        stage('Docker-Push') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-login') {
+                        docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push()
+                    }
+                }
+            }
+        }
+        stage('Deploy-Helm-Chart') {
+            steps {
+                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
+                    dir('Ansible/javadeployment') {
+                        sh """
+                            # Change ownership to Jenkins user and set file permissions
+                            chown jenkins:jenkins \$KUBECONFIG_FILE
+                            chmod 600 \$KUBECONFIG_FILE
+                            # Now export the KUBECONFIG environment variable
+                            export KUBECONFIG=\$KUBECONFIG_FILE
+                            # Run the helm upgrade command
+                            helm upgrade --install javaapi . --namespace java-app \
+                            --set image.repository=\${IMAGE_NAME},image.tag=\${IMAGE_TAG}
+                        """
+                    }
+                }
+            }
+        }
+        stage('Display Application URL') {
+            steps {
+                echo 'Application URL: [http://192.168.56.106:30007/](http://192.168.56.106:30007/)'
+            }
+        }
+        stage('Write File and Archive') {
+            steps {
+                script {
+                    writeFile file: 'application_url.txt', text: 'Application URL: [http://192.168.56.106:30007/](http://192.168.56.106:30007/)'
+                    archiveArtifacts artifacts: 'application_url.txt', onlyIfSuccessful: true
+                }
+            }
+        }
+    }
+}
