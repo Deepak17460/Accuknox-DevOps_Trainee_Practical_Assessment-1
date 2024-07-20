@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: javaapi-deployment
+  name: wisecowapi-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: javaapi
+      app: wisecowapi
   template:
     metadata:
       labels:
-        app: javaapi
+        app: wisecowapi
     spec:
       containers:
-      - name: javaapi
+      - name: wisecow
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 8080
+        - containerPort: 4499
