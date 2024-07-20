@@ -1,2 +1,2 @@
-# Deploy-Using-Helm-Java-Application
-Deploy Java Application using Helm
+# Deploy-Using-Helm-Wisecow-Application-K8S
+Deploy Wisecow Application to Kubernetes using Helm
