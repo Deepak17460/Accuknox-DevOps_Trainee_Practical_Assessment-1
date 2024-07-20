@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'deploy-2', credentialsId: 'Nagarro-Gitlab', url: 'https://git.nagarro.com/GITG00641/DotNet/deepak-kumar.git'
+                git branch: 'deploy-2', credentialsId: 'Gitlab', url: 'https://github.com/Deepak17460/Accuknox-DevOps_Trainee_Practical_Assessment-.git'
             }
         }
         stage('Maven-Build') {
