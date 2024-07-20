@@ -59,17 +59,7 @@ kubectl get services
 
 ## Conclusion
 You have successfully deployed the Wisecow application to your Kubernetes cluster using Helm. For any issues or further assistance, feel free to reach out.
+Wisecow Application (https://github.com/user-attachments/assets/d3014f3f-feec-46f3-b694-b5f7dac8db98)
 
 ---
 
-Feel free to copy and paste this into your README. If you need any more adjustments, just let me know! 😊
-
-Source: Conversation with 
-(1) Getting Started with Helm: Simplifying Kubernetes Deployments with Best .... https://www.kubernet.dev/getting-started-with-helm-simplifying-kubernetes-deployments-with-best-practices-and-lessons/.
-(2) 13 Best Practices for using Helm - Coder Society. https://codersociety.com/blog/articles/helm-best-practices.
-(3) Using Helm to Deploy Kubernetes to Multiple Environments - Codefresh. https://codefresh.io/blog/helm-deployment-environments/.
-(4) andredesousa/kubernetes-best-practices - GitHub. https://github.com/andredesousa/kubernetes-best-practices.
-(5) Kafka on Kubernetes: Best Practices for Deployment and Management. https://reintech.io/blog/kafka-on-kubernetes-deployment-and-management.
-(6) undefined. https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3.
-(7) undefined. https://charts.bitnami.com/bitnami.
-(8) undefined. https://hub.helm.sh/charts/bitnami/mysql.
