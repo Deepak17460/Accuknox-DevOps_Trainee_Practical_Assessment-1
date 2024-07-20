@@ -22,7 +22,10 @@ The Docker image for the Wisecow application is available at:
 ```bash
 docker pull dpcode72/wisecow:1.0
 ```
-
+Docker Image run
+```bash
+docker run -d -p 4499:4499 --name wisecow dpcode72/wisecow:1.0
+```
 ## Setting Up Kubernetes and Helm
 ### Install Kubernetes
 1. Follow the [Kubernetes installation guide](https://kubernetes.io/docs/setup/) to set up your cluster.
