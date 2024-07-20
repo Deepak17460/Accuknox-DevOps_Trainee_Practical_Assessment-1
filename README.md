@@ -1,7 +1,7 @@
 
 ---
 
-#Deploy Wisecow Application to Kubernetes using Helm
+# Deploy Wisecow Application to Kubernetes using Helm
 
 ![image](https://github.com/user-attachments/assets/d04e2d4b-1efb-44ae-bc6d-bd4deb957965)
 
