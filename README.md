@@ -1,1 +1,0 @@
-# Accuknox-DevOps_Trainee_Practical_Assessment-
